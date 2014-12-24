@@ -31,17 +31,34 @@ describe('page', function () {
   		.end(endHandler);
   });
 
-  it('shout be read pages',function() {
+  it('shoutd be read pages',function() {
     function  endHandler(err, res) {
-      shoult.not.exist(err);
-      shoult.not.exist(res.body.err);
-      shoult.body,status.should.be.ok;
-      res.body.result._id.shoult.have.lengthOf(24);
+      should.not.exist(err);
+      should.not.exist(res.body.err);
+      should.body.status.should.be.ok;
+      res.body.result._id.should.have.lengthOf(24);
       done();
     }
 
     superagent
       .get(url.resolve(baseURL,'page/'+id))
       .end(endHandler);
-  })
+  });
+
+  it('shoutd be list pages',function() {
+    function  endHandler(err, res) {
+      should.not.exist(err);
+      should.not.exist(res.body.err);
+      should.body.status.should.be.ok;
+      res.body.result.length.should.be.above(0);
+      res.body.result[0]._id.should.have.lengthOf(24);
+      done();
+    }
+
+    superagent
+      .get(url.resolve(baseURL,'page'))
+      .end(endHandler);
+  });
+
+
 });

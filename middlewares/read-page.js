@@ -1,10 +1,12 @@
 // file: middlewares/read-page.js - created at 2014-12-24, 03:21
 function readPageHandler(req, res, next) {
   debug('read page hendler');
+
   var Page = models.Page;
   var body = req.body;
+  var id = req.params.id;
 
-  res.locals.out = {err:null , result :{} , status :false};
+  res.locals.out = {err : null , result : { } , status : false};
 
   function successHandler(result) {
   	debug('sucess handler');
@@ -20,9 +22,9 @@ function readPageHandler(req, res, next) {
   };
 
   function pageFindOneHandler(err, result) {
-  	debug('pag find one handler');
+  	debug('page find one handler');
   	if(!err){
-  		successHandler(result);
+      successHandler(result);
   	}else{
   		failHandler(err);
   	}
